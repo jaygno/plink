@@ -1,3 +1,4 @@
+#!/bin/sh
 if [ $# != 1 ] ; then 
     echo "usage: plink port" 
     exit 1; 
@@ -8,3 +9,7 @@ for p in ${PID}
 do
     ls -l /proc/$p | sed -n '/exe/p'
 done
+
+if [ "$PID" = "" ];then
+    echo $1" is free."
+fi
