@@ -1,0 +1,10 @@
+if [ $# != 1 ] ; then 
+    echo "usage: plink port" 
+    exit 1; 
+fi 
+
+PID=`lsof -i:$1 |sed -n '/IPv/p'|awk '{print $2}'`
+for p in ${PID}
+do
+    ls -l /proc/$p | sed -n '/exe/p'
+done
